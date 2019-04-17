@@ -135,7 +135,7 @@ MODE_REQUEST_FORMS = {
 
 
 def validate_request_form(mode, request):
-    if request.first_line_format == "absolute" and request.scheme != "http":
+    if request.first_line_format == "absolute" and request.scheme not in [ "http", "https" ]:
         raise exceptions.HttpException(
             "Invalid request scheme: %s" % request.scheme
         )
